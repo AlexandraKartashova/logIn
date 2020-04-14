@@ -1,0 +1,35 @@
+* {
+	color: white;
+}
+
+.bg {
+	background: url('../img/JABA-POINT.RU_tumannost_zvezdy_vselennaya_svet.jpg') no-repeat;
+	width: 100% !important;
+	height: 100vh;
+}
+
+label {
+	color: white;
+}
+
+.form-container {
+	width: 100vh;
+	border: 0px solid grey;
+	padding: 30px 40px;
+	margin-top: 20vh;
+	-webkit-box-shadow: -1px 4px 26px 11px rgba(0,0,0,0.75);
+	-moz-box-shadow: -1px 4px 26px 11px rgba(0,0,0,0.75);
+	box-shadow: -1px 4px 26px 11px rgba(0,0,0,0.75);
+}
+
+.container-fluid {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#errorPassword,
+#errorLogin { 
+	color: red;
+	font-weight: bold;
+}
