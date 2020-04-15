@@ -16,7 +16,6 @@ loginSignUp.addEventListener( "keyup" , () => {
 	if(loginSignUp.value.match(letters) && loginSignUp.value.length >= 5) {
 		hintLoginSignUp.innerHTML = " ";
 		flagLoginSignUp = true;
-		console.log('flagLoginSignUp', flagLoginSignUp);
 		return true;
 	} else {
 		hintLoginSignUp.innerHTML = 'Login must consist of letters Aa-Zz';
@@ -31,6 +30,7 @@ emailSignUp.addEventListener( "keyup", () => {
 		flagEmailSignUp = true;
 		return true;
 	} else {
+		hintEmailSignUp.innerHTML = "'You must enter exampl@gmail.com'";
 		return false;
 	}
 });
