@@ -10,16 +10,26 @@
 
 label {
 	color: white;
+	font-weight: bold;
+}
+
+input {
+	color: black;
 }
 
 .form-container {
-	width: 100vh;
+	float: left;
+	width: 50%;
 	border: 0px solid grey;
 	padding: 30px 40px;
 	margin-top: 20vh;
 	-webkit-box-shadow: -1px 4px 26px 11px rgba(0,0,0,0.75);
 	-moz-box-shadow: -1px 4px 26px 11px rgba(0,0,0,0.75);
 	box-shadow: -1px 4px 26px 11px rgba(0,0,0,0.75);
+}
+
+.row {
+	width: 60%;
 }
 
 .container-fluid {
@@ -31,5 +41,16 @@ label {
 #errorPassword,
 #errorLogin { 
 	color: red;
+	font-weight: bold;
+}
+
+/* .fas {
+	background-color: cornsilk;
+	color: black;
+} */
+
+#hintLogin,
+#hintPassword {
+	color: #7FFF00;
 	font-weight: bold;
 }

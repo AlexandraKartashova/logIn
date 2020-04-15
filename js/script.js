@@ -1,69 +1,58 @@
 /*jshint esversion: 6 */
 
-
-validationLogin = (login) => {
-	let letters = /^([A-Za-z])+$/;
-	if(login.value.match(letters)) {
-		errorLogin.innerHTML = " ";
-		return true;
-	} else {
-		errorLogin.innerHTML = 'Username must have only letters';
-		return false;
-	}
-};
-
-validationPassword = (password) => {
-	let patternPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=(.*[a-zA-Z])(?=.*[0-9])).{6,10}$/;
-	console.log(' password.length', password);
-	if(password.value.match(patternPassword)) {
-		// console.log('OK');
-		errorPassword.innerHTML = " ";
-	} else {
-		errorPassword.innerHTML = "Password is not a valid format.<br> Use symbol: a-z, A-Z, 0-9 " ;
-		return false;
-	}
-	return true;
-};
-
 let login = document.getElementById('login');
 let password = document.getElementById('password');
 
+let flagLogin = false;
+let flagPassword = false;
+
+login.addEventListener( "keyup" , () => {
+	let letters = /^([A-Za-z])+$/;
+	if(login.value.match(letters) && login.value.length >= 5) {
+		hintLogin.innerHTML = " ";
+		flagLogin = true;
+		return true;
+	} else {
+		hintLogin.innerHTML = 'Login must consist of letters Aa-Zz';
+		flagLogin = false;
+		return false;
+	}
+});
+
+password.addEventListener( "keyup" , () => {
+	let patternPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=(.*[a-zA-Z])(?=.*[0-9])).{5,10}$/;
+
+	if(password.value.match(patternPassword)) {
+		hintPassword.innerHTML = " ";
+		flagPassword = true;
+	} else {
+		hintPassword.innerHTML = "Password must contain:<br>1 lowercase letter<br>1 capital letter<br>1 digit<br>password length 6-10 characters" ;
+		return false;
+	}
+	return true;
+});
+
 unlockBtn = () => {
-	if(password.value.length < 5 || login.value.length < 5) {
+	if(!(flagLogin == true && flagPassword == true)) {
 		document.getElementById('btn').setAttribute('disabled', true);
+		document.getElementById('btn').classList.remove('btn-success');
 	} else {
 		document.getElementById('btn').removeAttribute('disabled');
 		document.getElementById('btn').classList.add('btn-success');
 	}
 };
 
-login.addEventListener('input', unlockBtn);
-password.addEventListener('input', unlockBtn);
-
+login.addEventListener('keyup', unlockBtn);
+password.addEventListener('keyup', unlockBtn);
 
 
 logIn = () => {
-
-	let login = document.getElementById('login');
-	let password = document.getElementById('password');
-
-	// console.log('login',login);
-	// console.log('password',password);
-
 	if(login.value === 'admin' && password.value === 'admiN7') {
-		console.log('just do IT');
 		window.location.assign('file:///D:/proj/regist/adminPage.html');
 	} else {
 		// document.getElementById('btn').classList.remove('hidden');
-		console.log('dab');
+		alert('try again');
 	}
-
-	if(validationLogin(login)){	
-	if(validationPassword(password)) {
-	}
-	}
-
-	
 };
 
 
