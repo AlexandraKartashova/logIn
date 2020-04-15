@@ -39,7 +39,11 @@ input {
 }
 
 #errorPassword,
-#errorLogin { 
+#errorLogin,
+#errorPasswordSignUp,
+#errorLoginSignUp,
+#errorEmailSignUp,
+#errorConfPasswordSignUp { 
 	color: red;
 	font-weight: bold;
 }
@@ -50,7 +54,15 @@ input {
 } */
 
 #hintLogin,
-#hintPassword {
+#hintPassword,
+#hintPasswordSignUp,
+#hintLoginSignUp,
+#hintEmailSignUp,
+#hintConfPasswordSignUp {
 	color: #7FFF00;
 	font-weight: bold;
+}
+
+.storage {
+	font-size: 40px;
 }

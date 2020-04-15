@@ -9,29 +9,28 @@ let confirmPasswordSignUp = document.getElementById('password-confirm');
 let flagLoginSignUp = false;
 let flagPasswordSignUp = false;
 let flagEmailSignUp = false;
+let flagconfirmPasswordSignUp = false;
 
 loginSignUp.addEventListener( "keyup" , () => {
 	let letters = /^([A-Za-z])+$/;
 	if(loginSignUp.value.match(letters) && loginSignUp.value.length >= 5) {
-		hintLogin.innerHTML = " ";
+		hintLoginSignUp.innerHTML = " ";
 		flagLoginSignUp = true;
+		console.log('flagLoginSignUp', flagLoginSignUp);
 		return true;
 	} else {
-		hintLogin.innerHTML = 'Login must consist of letters Aa-Zz';
-		flagLoginSignUp = false;
+		hintLoginSignUp.innerHTML = 'Login must consist of letters Aa-Zz';
 		return false;
 	}
 });
 
 emailSignUp.addEventListener( "keyup", () => {
-	let letters =/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"/;
-	if(loginSignUp.value.match(letters)) {
-		hintLogin.innerHTML = " ";
+	let letters =/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+	if(emailSignUp.value.match(letters)) {
+		hintEmailSignUp.innerHTML = " ";
 		flagEmailSignUp = true;
 		return true;
 	} else {
-		hintLogin.innerHTML = 'Login must consist of letters Aa-Zz';
-		flagEmailSignUp = false;
 		return false;
 	}
 });
@@ -40,36 +39,47 @@ passwordSignUp.addEventListener( "keyup" , () => {
 	let patternPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=(.*[a-zA-Z])(?=.*[0-9])).{5,10}$/;
 
 	if(passwordSignUp.value.match(patternPassword)) {
-		hintPassword.innerHTML = " ";
+		hintPasswordSignUp.innerHTML = " ";
 		flagPasswordSignUp = true;
 	} else {
-		hintPassword.innerHTML = "Password must contain:<br>1 lowercase letter<br>1 capital letter<br>1 digit<br>password length 6-10 characters" ;
+		hintPasswordSignUp.innerHTML = "Password must contain:<br>1 lowercase letter<br>1 capital letter<br>1 digit<br>password length 6-10 characters" ;
 		return false;
 	}
 	return true;
 });
 
-unlockBtn = () => {
-	if(!(flagLoginSignUp == true && flagPasswordSignUp == true)) {
-		document.getElementById('btn').setAttribute('disabled', true);
-		document.getElementById('btn').classList.remove('btn-success');
+confirmPasswordSignUp.addEventListener( "keyup" , () => {
+	if(confirmPasswordSignUp.value !== passwordSignUp.value) {
+		errorConfPasswordSignUp.innerHTML = "Password mismatch" ;
+		hintConfPasswordSignUp.innerHTML = " ";
 	} else {
-		document.getElementById('btn').removeAttribute('disabled');
-		document.getElementById('btn').classList.add('btn-success');
+		errorConfPasswordSignUp.innerHTML = " ";
+		flagconfirmPasswordSignUp = true;
+		return false;
+	}
+	return true;
+});
+
+unlockBtnSignUp = () => {
+	if(!(flagLoginSignUp == true 
+		&& flagPasswordSignUp == true
+		&& flagEmailSignUp == true
+		&& flagconfirmPasswordSignUp == true)) {
+		document.getElementById('btn-sign-up').setAttribute('disabled', true);
+		document.getElementById('btn-sign-up').classList.remove('btn-success');
+	} else {
+		document.getElementById('btn-sign-up').removeAttribute('disabled');
+		document.getElementById('btn-sign-up').classList.add('btn-success');
 	}
 };
 
-loginSignUp.addEventListener('keyup', unlockBtn);
-passwordSignUp.addEventListener('keyup', unlockBtn);
+loginSignUp.addEventListener('keyup', unlockBtnSignUp);
+passwordSignUp.addEventListener('keyup', unlockBtnSignUp);
+emailSignUp.addEventListener('keyup', unlockBtnSignUp);
+confirmPasswordSignUp.addEventListener('keyup', unlockBtnSignUp);
 
 
 signUp = () => {
-	if(loginSignUp.value === 'admin' && passwordSignUp.value === 'admiN77') {
-		window.location.assign('file:///D:/proj/regist/adminPage.html');
-	} else {
-		// document.getElementById('btn').classList.remove('hidden');
-		alert('try again');
-	}
+	window.location.assign('file:///D:/proj/regist/newUser.html');
+	localStorage.setItem('login', loginSignUp.value);
 };
-
-

@@ -21,7 +21,6 @@ login.addEventListener( "keyup" , () => {
 
 password.addEventListener( "keyup" , () => {
 	let patternPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=(.*[a-zA-Z])(?=.*[0-9])).{5,10}$/;
-
 	if(password.value.match(patternPassword)) {
 		hintPassword.innerHTML = " ";
 		flagPassword = true;

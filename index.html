@@ -39,10 +39,10 @@
 					<div id="hintPassword"></div>
 					<button
 					type="button"
-					 id="btn" 
-					 class="btn btn-primary btn-block"
-					 onclick="logIn()"
-					 disabled>Submit</button>
+					id="btn" 
+					class="btn btn-primary btn-block"
+					onclick="logIn()"
+					disabled>Submit</button>
 				</form>
 
 				<form class="form-container" action='' method="POST">
@@ -55,6 +55,8 @@
 						id="login-sugn-up" 
 						name="login-sugn-up" 
 						placeholder="Login">
+						<div id="errorLoginSignUp"></div>
+						<div id="hintLoginSignUp"></div>
 					</div>
 				
 					<div class="form-group">
@@ -64,6 +66,8 @@
 						id="email-sugn-up" 
 						name="email-sugn-up" 
 						placeholder="E-mail">
+						<div id="errorEmailSignUp"></div>
+						<div id="hintEmailSignUp"></div>
 					</div>
 				
 					<div class="form-group">
@@ -73,6 +77,8 @@
 						id="password-sugn-up"
 						name="password-sugn-up" 
 						placeholder="Password">
+						<div id="errorPasswordSignUp"></div>
+						<div id="hintPasswordSignUp"></div>
 					</div>
 				
 					<div class="form-group">
@@ -82,10 +88,13 @@
 						id="password-confirm" 
 						name="password_confirm" 
 						placeholder="Confirm Password">
+						<div id="errorConfPasswordSignUp"></div>
+						<div id="hintConfPasswordSignUp"></div>
 					</div>
 				
 					<div class="control-group">
 						<button type="button" 
+						id="btn-sign-up" 
 						class="btn btn-sugn-up btn-primary btn-block"
 						onclick="signUp()"
 						disabled>Register</button>
