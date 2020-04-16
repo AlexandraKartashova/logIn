@@ -2,9 +2,25 @@
 
 let login = document.getElementById('login');
 let password = document.getElementById('password');
+let showHidePassword = document.getElementById('password-eye');
+let formLogin = document.getElementById('form-login');
+let formSignUp = document.getElementById('form-sign-up');
 
 let flagLogin = false;
 let flagPassword = false;
+let flagShowPassword = false;
+
+showHidePassword.addEventListener( "click", () => {
+	if(!flagShowPassword) {
+		password.removeAttribute('type');
+		password.setAttribute('type', 'text');
+		flagShowPassword = !flagShowPassword;
+	} else {
+		password.removeAttribute('type');
+		password.setAttribute('type', 'password');
+		flagShowPassword = !flagShowPassword;
+	}
+});
 
 login.addEventListener( "keyup" , () => {
 	let letters = /^([A-Za-z])+$/;
@@ -48,10 +64,14 @@ password.addEventListener('keyup', unlockBtn);
 logIn = () => {
 	if(login.value === 'admin' && password.value === 'admiN7') {
 		window.location.assign('file:///D:/proj/regist/adminPage.html');
+		login.innerHTML = '';
 	} else {
 		// document.getElementById('btn').classList.remove('hidden');
 		alert('try again');
 	}
 };
 
-
+changeForm = () => {
+	formLogin.classList.add('hidden');
+	formSignUp.classList.remove('hidden');
+};
